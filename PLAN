@@ -32,9 +32,9 @@ you at all.
 What Kind Of Messaging:
 
 Myt is intended to handle electronic mail (E-mail) and chat (IM) messaging.
-Who knows if it that blanket ever be expanded upon. The reason being that they
-share a lot in common and the only difference is typically in the amount of
-time between reading/responding to messages. The UI will probably need to
+Who knows if it that blanket will ever be expanded upon. The reason being that
+they share a lot in common and the only difference is typically in the amount
+of time between reading/responding to messages. The UI will probably need to
 differ substantially to support them meaningfully, but the inner workings
 should be shared between them.
 
@@ -79,7 +79,7 @@ have their blacklists and whitelists and can share them with other trusted
 hosts. The hope is that as a group, a reliable list can be maintained to keep
 malicious users out of the loop. Naturally, if spammers need a new IP or
 domain name for every message it'll be much more difficult than just changing
-users, so these lists will maintain users and hosts. If a host is seem as
+users, so these lists will maintain users and hosts. If a host is seen as
 malicious or poorly adminstered, it will get blacklisted, making all of its
 users ignored.
 
@@ -97,13 +97,22 @@ much like they do with current technologies.
 
 Other Technical Details:
 
+UTF-8.
+  Since we want our protocol to support as many languages as possible, it
+makes sense to use a `Unicode' encoding. UTF-8 is great because it's
+ASCII-compatible and can [AFAIK] handle pretty much every language on Earth,
+so it doesn't really make sense to use anything else. Since UTF-8 is
+compatible with ASCII, it could be argued that ASCII is also supported, but I
+think it makes the most sense to demand UTF-8 is used and supported. I've
+never written a UTF-8 aware application so we'll see how this goes...
+
 XML.
   It is expected that messages will be transmitted in XML format to make
 validation relatively easy. Hopefully, schemas and/or DTDs can be written to
 accurately validate the message data with little custom code. Obviously, the
 XML will be encrypted so information that needs to be known in order to
-decrypt the message will probably be kept simple and sent in a rudimentary
-message format.
+identify messages and decrypt the message will probably be kept simple and
+sent in a rudimentary message format outside of the XML.
 
 Compression.
   To save some space during transmission, it seems to make sense to support
