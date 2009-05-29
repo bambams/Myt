@@ -81,7 +81,17 @@ malicious users out of the loop. Naturally, if spammers need a new IP or
 domain name for every message it'll be much more difficult than just changing
 users, so these lists will maintain users and hosts. If a host is seen as
 malicious or poorly adminstered, it will get blacklisted, making all of its
-users ignored.
+users ignored. When users report a message as malicious, a message will be
+sent to the host to give them the opportunity to deal with the user
+themselves and keep themselves clean so they don't get blacklisted.
+
+On top of host whitelists/blacklists, users will also be able to maintain
+their own lists and configure just how paranoid their account is. Do you want
+to only accept messages from trusted contacts? Deal. Do you want to maybe
+route messages from untrusted contacts into a special untrusted directory?
+Deal. Basically, on top of hosts communicating about believed malicious users
+and hosts, it also puts the power in user's hands to configure how much
+they're wiling to put up with.
 
 ==========================================
 
