@@ -1,0 +1,129 @@
+1. Write teh codez.
+2. ???
+3. Profit.
+
+========================================
+
+The Name:
+
+The name Myt is pronounced like "mit" and was derived from "transmit". It is
+also an acronym for Managed Yodel Transission, for little reason at all. For
+that reason, however, the protocol Myt speaks will be named "Yodel". Whereby
+Brandon McCaig came up with Myt, the yodel part of the naming scheme was
+contributed by Samuel Henderson and patched between the two.
+
+========================================
+
+The Project:
+
+Myt is intended to define three things: a messaging service, a messaging
+client, and a protocol for them to speak (albeit, the protocol is ALSO named
+Yodel; don't let me lose you).
+
+Though I'm unfamiliar with formal procedures for defining a 'standard', I'm
+sure if this project gets anywhere serious enough to need it I will be able to
+find the information I need. The aim is to have a very strict standard whereby
+non-standard software is unsupported, hated, and flamed. The reason for this
+will either become clear in the following sections or will make no sense to
+you at all.
+
+=========================================
+
+What Kind Of Messaging:
+
+Myt is intended to handle electronic mail (E-mail) and chat (IM) messaging.
+Who knows if it that blanket ever be expanded upon. The reason being that they
+share a lot in common and the only difference is typically in the amount of
+time between reading/responding to messages. The UI will probably need to
+differ substantially to support them meaningfully, but the inner workings
+should be shared between them.
+
+=========================================
+
+What's Different:
+
+OK, so E-mail and chat have been done to death. Why do we need new protocols
+and software to handle them? We probably don't. I basically don't feel like
+learning other standards just so I can extend them. This is perhaps lazy and
+foolish, but I intend to learn from this experience so sue me. In any case,
+by not extending some other software/standard I can avoid the ambiguities
+involved. By separating this project by name, it can encapulate the features
+I want in a way that can be relied upon without confusing people about which
+features are supported, trusted, guaranteed, and whatever. Or so I claim.
+
+"That doesn't really tell me what's different..."
+
+I'm getting there. Geez. OK, so I want E-mail/chat to be secure and spam free.
+My plan to accomplish this, at least to some extent, is to demand encryption,
+and use checks and balances and peer-based whitelists/blacklists to preserve
+the integrity of the "Myt network(s)". Essentially, the encryption should keep
+unintended eyes off of the messages during transmission. The checks and
+balances should help to regulate who is permitted to, for example, send me a
+message in an automated way to save me, the user, the trouble of flagging
+senders as malicious.
+
+The encryption will be done using existing standards. I'm not a genius and
+clearly won't come up with anything better than what real geniuses have. The
+actual algorithms used are thus far undetermined, but it seems reasonable to
+say the system will use public key cryptography.
+
+The checks and balances will serve a few purposes: firstly, to prevent
+spoofing, the receiver will ask the alleged sender if it actually sent a given
+message (i.e., compared by hash). If a host says no, the message is dropped
+and forgotten about. If the host says yes, then the message is assumed to be
+legit. Naturally, hosts will be responsible for making sure only authorized
+users are able to send messages (hosts that are repeatedly abused will be
+blacklisted until their administrators can fix the problem).
+Blacklists/whitelists will be managed on a peer-basis. That is, hosts will
+have their blacklists and whitelists and can share them with other trusted
+hosts. The hope is that as a group, a reliable list can be maintained to keep
+malicious users out of the loop. Naturally, if spammers need a new IP or
+domain name for every message it'll be much more difficult than just changing
+users, so these lists will maintain users and hosts. If a host is seem as
+malicious or poorly adminstered, it will get blacklisted, making all of its
+users ignored.
+
+==========================================
+
+Anything Else:
+
+Messages will primarily send text, though markup may be supported (i.e., XHTML
+or XML to support rich content; preferably the standard will try to limit the
+possibilities in ways that enforce messages are readable in text-only modes).
+That said, binary attachments will also be supported so users can share files
+much like they do with current technologies.
+
+==========================================
+
+Other Technical Details:
+
+XML.
+  It is expected that messages will be transmitted in XML format to make
+validation relatively easy. Hopefully, schemas and/or DTDs can be written to
+accurately validate the message data with little custom code. Obviously, the
+XML will be encrypted so information that needs to be known in order to
+decrypt the message will probably be kept simple and sent in a rudimentary
+message format.
+
+Compression.
+  To save some space during transmission, it seems to make sense to support
+compression right there in the standard protocols. The compression will
+probably be sandwiched in between the XML and encryption. Again, existing
+standardized algorithms will be used.
+
+==========================================
+
+Initial Implementation:
+
+I'm planning to try to write the first version in Python because I'm just
+learning it and need something to do with it and it also has a ton of packages
+available for the technologies I plan to make use of. It is also expected to
+be relatively platform independent which should make it relatively easy to
+support all the major platforms without lots of extra work. It just seems like
+a good fit for now. If in the future Python is identified as unsuitable, Myt
+or parts of it will be ported to more appropriate platforms.
+
+The code will be released open source, probably initially under the GNU GPL.
+
+And I guess that's all I have to say for now. :D
+
