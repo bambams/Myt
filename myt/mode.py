@@ -18,3 +18,7 @@
 # along with Myt.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
+mail = 0;
+chat = 1;
+
