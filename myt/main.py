@@ -68,7 +68,11 @@ def parse_args(argv):
 def print_help():
     """Print the command usage/help message.
     """;
-    print """
+    print """  Copyright (C) 2009 Brandon McCaig, Samuel Henderson
+
+  myt is the client application for the Myt project, an attempt to offer
+  secure E-mail and chat services in an open way.
+
     myt [ -B BCC | --bcc=BCC ] [ -C CC | -cc=CC ] [ -c FILE | --config=FILE ]
           [ -H HOST | --host=HOST ] [ -i | --interactive ]
           [ -M MESSAGE | --message=MESSAGE ]
@@ -76,7 +80,7 @@ def print_help():
           [ -R RECIPIENTS | --recipients=RECIPIENTS
               | -T RECIPIENTS | --to=RECIPIENTS ] [ -U USER | --user=USER ]
           [ -v | --verbose ]
-    myt [ -h | --help]
+    myt [ -h | --help ]
     myt [ -L | --license ]
     myt [ -V | --version ]
 
@@ -138,7 +142,25 @@ def print_help():
 def print_license():
     """Write the software license to stdout.
     """;
-    print "<License goes here>";
+    print """
+Myt is a secure messaging system composed of E-mail and chat facilities.
+Copyright (C) 2009 Brandon McCaig, Samuel Henderson
+
+This file is part of Myt.
+
+Myt is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+
+Myt is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Myt.  If not, see <http://www.gnu.org/licenses/>.
+""";
 
 def print_version():
     """Write the software version to stdout.
