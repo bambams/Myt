@@ -27,7 +27,7 @@ EXIT_FAILURE = -1;
 EXIT_SUCCESS = 0;
 
 def assert_recipients_unset(cfg):
-    """Assert the recipients are unset.
+    """Assert that primary recipients are unset.
 
     If the recipients are set already then we have too many recipients arguments
     and need to asplode.
@@ -47,6 +47,8 @@ def main(argv):
     if cfg.print_config:
         print cfg;
         sys.exit(EXIT_SUCCESS);
+    if cfg.interactive:
+        print "Interactive mode activated.";
     return EXIT_SUCCESS;
 
 def parse_args(argv):
@@ -76,7 +78,7 @@ def print_help():
     myt [ -B BCC | --bcc=BCC ] [ -C CC | -cc=CC ] [ -c FILE | --config=FILE ]
           [ -H HOST | --host=HOST ] [ -i | --interactive ]
           [ -M MESSAGE | --message=MESSAGE ]
-          [ -P PASSWORD | --password=PASSWORD ] [ --print-config]
+          [ -P PASSWORD | --password=PASSWORD ] [ --print-config ]
           [ -R RECIPIENTS | --recipients=RECIPIENTS
               | -T RECIPIENTS | --to=RECIPIENTS ] [ -U USER | --user=USER ]
           [ -v | --verbose ]
@@ -84,37 +86,37 @@ def print_help():
     myt [ -L | --license ]
     myt [ -V | --version ]
 
-  -B --bcc=BCC
+  -B, --bcc=BCC
       A semi-colon (;) delimited list of one or more recipients that will be
       sent a blind carbon-copy of the message. Contrary to conventional
       E-mail, no trace of them will be sent to other recipients.
 
-  -C --cc=CC
+  -C, --cc=CC
       A semi-colon (;) delimited list of one or more recipients that will be
       sent a carbon-copy of the message.
 
-  -c --config=FILE
+  -c, --config=FILE
       Specify a config file instead of the default.
 
-  -H --host=HOST
+  -H, --host=HOST
       The host server to use.
 
-  -h --help
+  -h, --help
       Print this message and exit.
 
-  -i --interactive
+  -i, --interactive
       Run in interactive mode.
 
-  -L --license
+  -L, --license
       Print the software license and exit.
 
-  -M --message=MESSAGE
+  -M, --message=MESSAGE
       Specifies the message to send.
 
   --non-interactive
       Override interactive option.
 
-  -P --password=PASSWORD
+  -P, --password=PASSWORD
       The user's password used to authenticate with the host. If this option
       is not supplied (recommended) then you will be prompted.
 
@@ -122,20 +124,20 @@ def print_help():
       Load configuration settings from the command-line and configuration file
       and print them to standard output.
 
-  -R --recipients=RECIPIENTS
+  -R, --recipients=RECIPIENTS
       A semi-colon (;) delimited list of the primary recipients of the
       message.
 
-  -T --to
+  -T, --to=RECIPIENTS
       An alias for --recipients.
 
-  -U --user=USER
+  -U, --user=USER
       The user name used to authenticate with the host.
 
-  -V --version
+  -V, --version
       Print the software version and exit.
 
-  -v --verbose
+  -v, --verbose
       Be verbose.
 """;
 
