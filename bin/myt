@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
 PYTHONPATH=$PYTHONPATH:$pwd
+
+cd "`dirname $0`/.."
 python2.6 myt/main.py "$@"
 
