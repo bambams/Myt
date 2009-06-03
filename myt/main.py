@@ -79,8 +79,8 @@ def print_help():
           [ -H <host> | --host=<host> ] [ -i | --interactive ]
           [ -M <message> | --message=<message> ]
           [ -P <password> | --password=<password> ] [ --print-config ]
-          [ -R <recipients> | --recipients=<recipients>
-              | -T <recipients> | --to=<recipients> ] [ -U <user> | --user=<user> ]
+          [ -R <recipients> | --recipients=<recipients> |
+              -T <recipients> | --to=<recipients> ] [ -U <user> | --user=<user> ]
           [ -v | --verbose ]
     myt [ -h | --help ]
     myt [ -L | --license ]
@@ -185,14 +185,15 @@ def process_opts(cfg, optlist):
             print_help();
             return 0;
         elif o in ("-i", "--interactive"):
-            pass;
+            if cfg.interactive != None:
+                cfg.interactive = True;
         elif o in ("-L", "--license"):
             print_license();
             return 0;
         elif o in ("-M", "--message"):
             pass;
         elif o == "--non-interactive":
-            pass;
+            cfg.interactive = None;
         elif o in ("-P", "--password"):
             pass;
         elif o == "--print-config":

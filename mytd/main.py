@@ -162,7 +162,7 @@ def print_version():
     print "<Version goes here>";
 
 def process_opts(cfg, optlist):
-    """Process Myt client command-line options.
+    """Process Myt server command-line options.
     """;
     for o, a in optlist:
         if o in ("-0", "--stdin"):
