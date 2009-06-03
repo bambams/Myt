@@ -74,32 +74,33 @@ def print_help():
   mytd is the server application for the Myt project, an attempt to offer
   secure E-mail and chat services in an open way.
 
-    mytd [ -0 FILE | --stdin=FILE ] [ -1 FILE | --stdout=FILE ]
-           [ -2 FILE | --stderr=FILE ] [ -C DIR | --chroot DIR ]
-           [ -c FILE | --config=FILE ] [ -G GID | --gid=GID ] [ --no-detach ]
-           [ --print-config ] [ -U UID | --uid=UID ]
-           [ -u UMASK | --umask=UMASK ] [ -v | --verbose ]
-           [ -W DIR | --workdir=DIR ]
+    mytd [ -0 <file> | --stdin=<file> ] [ -1 <file> | --stdout=<file> ]
+           [ -2 <file> | --stderr=<file> ]
+           [ -C <directory> | --chroot <directory> ]
+           [ -c <file> | --config=<file> ] [ -G <gid> | --gid=<gid> ]
+           [ --no-detach ] [ --print-config ] [ -U <uid> | --uid=<uid> ]
+           [ -u <umask> | --umask=<umask> ] [ -v | --verbose ]
+           [ -W <directory> | --workdir=<directory> ]
     mytd [ -h | --help ]
     mytd [ -L | --license ]
     mytd [ -V | --version ]
 
-  -0, --stdin=FILE
+  -0, --stdin=<file>
       Specify a file to use for stdin (NOTE: may not be used).
 
-  -1, --stdout=FILE
+  -1, --stdout=<file>
       Specify a file to use for stdout (NOTE: may not be used).
 
-  -2, --stderr=FILE
+  -2, --stderr=<file>
       Specify a file to use for stderr (NOTE: may not be used).
 
-  -C, --chroot=DIR
+  -C, --chroot=<directory>
       Specify a directory to chroot to.
 
-  -c, --config=FILE
+  -c, --config=<file>
       Specify a config file instead of the default.
 
-  -G, --gid=GID
+  -G, --gid=<gid>
       The system gid to run as.
 
   -h, --help
@@ -114,12 +115,12 @@ def print_help():
 
   --print-config
       Load configuration settings from the command-line and configuration file
-      and print them to standard output.
+      and print them to standard output; then exit.
 
-  -U, --uid=UID
+  -U, --uid=<uid>
       The system uid to run as.
 
-  -u, --umask=UMASK
+  -u, --umask=<umask>
       The file creation umask to set.
 
   -V, --version
@@ -128,7 +129,7 @@ def print_help():
   -v, --verbose
       Be verbose.
 
-  -W, --workdir=DIR
+  -W, --workdir=<directory>
       Specify the working directory to use.
 """;
 

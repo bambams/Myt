@@ -24,7 +24,7 @@ import myt.config;
 import sys;
 
 EXIT_FAILURE = -1;
-EXIT_SUCCESS = 0;
+EXIT_SU<cc>ESS = 0;
 
 def assert_recipients_unset(cfg):
     """Assert that primary recipients are unset.
@@ -42,14 +42,14 @@ def main(argv):
     if status < 0:
         sys.exit(EXIT_FAILURE);
     elif status == 0:
-        sys.exit(EXIT_SUCCESS);
+        sys.exit(EXIT_SU<cc>ESS);
     cfg.load();
     if cfg.print_config:
         print cfg;
-        sys.exit(EXIT_SUCCESS);
+        sys.exit(EXIT_SU<cc>ESS);
     if cfg.interactive:
         print "Interactive mode activated.";
-    return EXIT_SUCCESS;
+    return EXIT_SU<cc>ESS;
 
 def parse_args(argv):
     """Parse Myt client command-line arguments.
@@ -75,30 +75,30 @@ def print_help():
   myt is the client application for the Myt project, an attempt to offer
   secure E-mail and chat services in an open way.
 
-    myt [ -B BCC | --bcc=BCC ] [ -C CC | -cc=CC ] [ -c FILE | --config=FILE ]
-          [ -H HOST | --host=HOST ] [ -i | --interactive ]
-          [ -M MESSAGE | --message=MESSAGE ]
-          [ -P PASSWORD | --password=PASSWORD ] [ --print-config ]
-          [ -R RECIPIENTS | --recipients=RECIPIENTS
-              | -T RECIPIENTS | --to=RECIPIENTS ] [ -U USER | --user=USER ]
+    myt [ -B <bcc> | --bcc=<bcc> ] [ -C <cc> | -cc=<cc> ] [ -c <file> | --config=<file> ]
+          [ -H <host> | --host=<host> ] [ -i | --interactive ]
+          [ -M <message> | --message=<message> ]
+          [ -P <password> | --password=<password> ] [ --print-config ]
+          [ -R <recipients> | --recipients=<recipients>
+              | -T <recipients> | --to=<recipients> ] [ -U <user> | --user=<user> ]
           [ -v | --verbose ]
     myt [ -h | --help ]
     myt [ -L | --license ]
     myt [ -V | --version ]
 
-  -B, --bcc=BCC
+  -B, --bcc=<bcc>
       A semi-colon (;) delimited list of one or more recipients that will be
       sent a blind carbon-copy of the message. Contrary to conventional
       E-mail, no trace of them will be sent to other recipients.
 
-  -C, --cc=CC
+  -C, --cc=<cc>
       A semi-colon (;) delimited list of one or more recipients that will be
       sent a carbon-copy of the message.
 
-  -c, --config=FILE
+  -c, --config=<file>
       Specify a config file instead of the default.
 
-  -H, --host=HOST
+  -H, --host=<host>
       The host server to use.
 
   -h, --help
@@ -110,28 +110,28 @@ def print_help():
   -L, --license
       Print the software license and exit.
 
-  -M, --message=MESSAGE
+  -M, --message=<message>
       Specifies the message to send.
 
   --non-interactive
       Override interactive option.
 
-  -P, --password=PASSWORD
+  -P, --password=<password>
       The user's password used to authenticate with the host. If this option
       is not supplied (recommended) then you will be prompted.
 
   --print-config
       Load configuration settings from the command-line and configuration file
-      and print them to standard output.
+      and print them to standard output; then exit.
 
-  -R, --recipients=RECIPIENTS
+  -R, --recipients=<recipients>
       A semi-colon (;) delimited list of the primary recipients of the
       message.
 
-  -T, --to=RECIPIENTS
+  -T, --to=<recipients>
       An alias for --recipients.
 
-  -U, --user=USER
+  -U, --user=<user>
       The user name used to authenticate with the host.
 
   -V, --version
