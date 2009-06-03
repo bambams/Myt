@@ -18,43 +18,44 @@
 # along with Myt.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+import grp;
 import myt.mode;
+import os;
+import pwd;
 import string;
 # import xml;
 
-DEFAULT_FILE = "~/.myt/config.xml";
+DEFAULT_FILE = "/etc/mytd.xml";
 
 class Config:
     def __init__(self):
-        self.bcc = None;
-        self.cc = None;
+        self.chroot = None;
+        self.detach = None;
 #        self.file = DEFAULT_FILE;
-        self.host = None;
-        self.interactive = False;
-        self.message = None;
-        self.mode = myt.mode.mail;
-        self.password = None;
+        self.gid = os.getgid();
         self.print_config = False;
-        self.recipients = None;
-        self.user = None;
-        self.verbose = False;
+        self.stderr = None;
+        self.stdin = None;
+        self.stdout = None;
+        self.uid = os.getuid();
+        self.umask = 0;
+        self.workdir = "/";
     
     def load(self):
         pass;
     
     def __str__(self):
-        FORMAT = """bcc: {0}
-cc: {1}
-host: {2}
-interactive: {3}
-len(message): {4}
-mode: {5}
-password: {6}
-recipients: {7}
-user: {8}
-verbose: {9}""";
-        msglen = [lambda msg: len(msg), lambda msg: 0][self.message == None](self.message);
-        return str.format(FORMAT, self.bcc, self.cc, self.host,
-                          self.interactive, msglen, self.mode, self.password,
-                          self.recipients, self.user, self.verbose);
+        FORMAT = """chroot = {0}
+detach = {1}
+gid = {2} ({3})
+stderr = {4}
+stdin = {5}
+stdout = {6}
+uid = {7} ({8})
+umask = {9}
+workdir = {10}""";
+        return str.format(FORMAT, self.chroot, self.detach,
+                          grp.getgrgid(self.gid)[0], self.gid, self.stderr,
+                          self.stdin, self.stdout, pwd.getpwuid(self.uid)[0],
+                          self.uid, self.umask, self.workdir);
 

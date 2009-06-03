@@ -55,9 +55,9 @@ def parse_args(argv):
     """Parse Myt client command-line arguments.
     """;
     opts = "B:C:c:H:hiLM:P:R:T:U:Vv";
-    longopts = ["bcc", "cc", "config", "host", "help", "interactive",
-                "license", "message", "password", "print-config",
-                "recipients", "to", "user", "version", "verbose"];
+    longopts = ["bcc=", "cc=", "config=", "host=", "help", "interactive",
+                "license", "message=", "password=", "print-config",
+                "recipients=", "to=", "user=", "version", "verbose"];
     status = 1;
     cfg = myt.config.Config();
     optlist, args = getopt.gnu_getopt(argv[1:], opts, longopts);
