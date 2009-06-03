@@ -51,7 +51,7 @@ def main(argv):
     return EXIT_SUCCESS;
 
 def parse_args(argv):
-    """Parse Myt client command-line arguments.
+    """Parse Myt server command-line arguments.
     """;
     opts = "0:1:2:C:c:G:hLU:u:VvW:";
     longopts = ["chroot=", "config=", "gid=", "help", "license", "no-detach",
