@@ -75,11 +75,11 @@ def print_help():
   secure E-mail and chat services in an open way.
 
     mytd [ -0 FILE | --stdin=FILE ] [ -1 FILE | --stdout=FILE ]
-           [ -2 FILE | --stderr=FILE ] [ -C CHROOT | --chroot CHROOT ]
+           [ -2 FILE | --stderr=FILE ] [ -C DIR | --chroot DIR ]
            [ -c FILE | --config=FILE ] [ -G GID | --gid=GID ] [ --no-detach ]
            [ --print-config ] [ -U UID | --uid=UID ]
            [ -u UMASK | --umask=UMASK ] [ -v | --verbose ]
-           [ -W WORKDIR | --workdir=WORKDIR ]
+           [ -W DIR | --workdir=DIR ]
     mytd [ -h | --help ]
     mytd [ -L | --license ]
     mytd [ -V | --version ]
@@ -93,7 +93,7 @@ def print_help():
   -2, --stderr=FILE
       Specify a file to use for stderr (NOTE: may not be used).
 
-  -C, --chroot=FILE
+  -C, --chroot=DIR
       Specify a directory to chroot to.
 
   -c, --config=FILE
@@ -128,7 +128,7 @@ def print_help():
   -v, --verbose
       Be verbose.
 
-  -W, --workdir=WORKDIR
+  -W, --workdir=DIR
       Specify the working directory to use.
 """;
 
