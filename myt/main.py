@@ -24,7 +24,7 @@ import myt.config;
 import sys;
 
 EXIT_FAILURE = -1;
-EXIT_SU<cc>ESS = 0;
+EXIT_SUCCESS = 0;
 
 def assert_recipients_unset(cfg):
     """Assert that primary recipients are unset.
@@ -42,14 +42,14 @@ def main(argv):
     if status < 0:
         sys.exit(EXIT_FAILURE);
     elif status == 0:
-        sys.exit(EXIT_SU<cc>ESS);
+        sys.exit(EXIT_SUCCESS);
     cfg.load();
     if cfg.print_config:
         print cfg;
-        sys.exit(EXIT_SU<cc>ESS);
+        sys.exit(EXIT_SUCCESS);
     if cfg.interactive:
         print "Interactive mode activated.";
-    return EXIT_SU<cc>ESS;
+    return EXIT_SUCCESS;
 
 def parse_args(argv):
     """Parse Myt client command-line arguments.
