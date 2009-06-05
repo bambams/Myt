@@ -75,13 +75,13 @@ def print_help():
   myt is the client application for the Myt project, an attempt to offer
   secure E-mail and chat services in an open way.
 
-    myt [ -B <bcc> | --bcc=<bcc> ] [ -C <cc> | -cc=<cc> ] [ -c <file> | --config=<file> ]
-          [ -H <host> | --host=<host> ] [ -i | --interactive ]
-          [ -M <message> | --message=<message> ]
+    myt [ -B <bcc> | --bcc=<bcc> ] [ -C <cc> | -cc=<cc> ]
+          [ -c <file> | --config=<file> ] [ -H <host> | --host=<host> ]
+          [ -i | --interactive ] [ -M <message> | --message=<message> ]
           [ -P <password> | --password=<password> ] [ --print-config ]
           [ -R <recipients> | --recipients=<recipients> |
-              -T <recipients> | --to=<recipients> ] [ -U <user> | --user=<user> ]
-          [ -v | --verbose ]
+              -T <recipients> | --to=<recipients> ]
+          [ -U <user> | --user=<user> ] [ -v | --verbose ]
     myt [ -h | --help ]
     myt [ -L | --license ]
     myt [ -V | --version ]
