@@ -38,26 +38,31 @@ def assert_recipients_unset(cfg):
 def main(argv):
     """The main routine for the Myt client.
     """;
-    status, cfg = parse_args(argv);
-    if status < 0:
-        sys.exit(EXIT_FAILURE);
-    elif status == 0:
-        sys.exit(EXIT_SUCCESS);
-    cfg.load();
-    if cfg.print_config:
-        print cfg;
-        sys.exit(EXIT_SUCCESS);
-    if cfg.interactive:
-        print "Interactive mode activated.";
-    return EXIT_SUCCESS;
+    try:
+        status, cfg = parse_args(argv);
+        if status < 0:
+            sys.exit(EXIT_FAILURE);
+        elif status == 0:
+            sys.exit(EXIT_SUCCESS);
+        cfg.load();
+        if cfg.print_config:
+            print cfg;
+            sys.exit(EXIT_SUCCESS);
+        if cfg.interactive:
+            print "Interactive mode activated.";
+        return EXIT_SUCCESS;
+    except Exception as ex:
+        print ex;
+        return EXIT_FAILURE;
 
 def parse_args(argv):
     """Parse Myt client command-line arguments.
     """;
     opts = "B:C:c:H:hiLM:P:R:T:U:Vv";
     longopts = ["bcc=", "cc=", "config=", "host=", "help", "interactive",
-                "license", "message=", "password=", "print-config",
-                "recipients=", "to=", "user=", "version", "verbose"];
+                "license", "message=", "non-interactive", "password=",
+                "print-config", "recipients=", "to=", "user=", "version",
+                "verbose"];
     status = 1;
     cfg = myt.config.Config();
     optlist, args = getopt.gnu_getopt(argv[1:], opts, longopts);

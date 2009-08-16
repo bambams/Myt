@@ -28,27 +28,31 @@ EXIT_FAILURE = -1;
 EXIT_SUCCESS = 0;
 
 def main(argv):
-    status, cfg = parse_args(argv);
-    if status < 0:
-        sys.exit(EXIT_FAILURE);
-    elif status == 0:
-        sys.exit(EXIT_SUCCESS);
-    cfg.load();
-    if cfg.print_config:
-        print cfg;
-        sys.exit(EXIT_SUCCESS);
-    with daemon.DaemonContext(
-            chroot_directory=cfg.chroot,
-            detach_process=cfg.detach,
-            gid=cfg.gid,
-            stderr=cfg.stderr,
-            stdin=cfg.stdin,
-            stdout=cfg.stdout,
-            uid=cfg.uid,
-            umask=cfg.umask,
-            working_directory=cfg.workdir):
-        pass;
-    return EXIT_SUCCESS;
+    try:
+        status, cfg = parse_args(argv);
+        if status < 0:
+            sys.exit(EXIT_FAILURE);
+        elif status == 0:
+            sys.exit(EXIT_SUCCESS);
+        cfg.load();
+        if cfg.print_config:
+            print cfg;
+            sys.exit(EXIT_SUCCESS);
+        with daemon.DaemonContext(
+                chroot_directory=cfg.chroot,
+                detach_process=cfg.detach,
+                gid=cfg.gid,
+                stderr=cfg.stderr,
+                stdin=cfg.stdin,
+                stdout=cfg.stdout,
+                uid=cfg.uid,
+                umask=cfg.umask,
+                working_directory=cfg.workdir):
+            pass;
+        return EXIT_SUCCESS;
+    except Exception as ex:
+        print ex;
+        return EXIT_FAILURE;
 
 def parse_args(argv):
     """Parse Myt server command-line arguments.

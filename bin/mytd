@@ -3,5 +3,5 @@
 PYTHONPATH=$PYTHONPATH:$pwd
 
 cd "`dirname $0`/.."
-python2.6 mytd/main.py "$@"
+python2.6 -tt mytd/main.py "$@"
 
