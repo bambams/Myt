@@ -34,7 +34,9 @@ class Host:
     def lookup(self, refresh=False):
         if self.name == None:
             raise Exception, "Attempted host lookup without name.";
+
         if self.ip != None and not refresh:
             return;
+
         raise NotImplementedError;
 

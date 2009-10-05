@@ -30,14 +30,19 @@ EXIT_SUCCESS = 0;
 def main(argv):
     try:
         status, cfg = parse_args(argv);
+
         if status < 0:
             sys.exit(EXIT_FAILURE);
         elif status == 0:
             sys.exit(EXIT_SUCCESS);
+
         cfg.load();
+
         if cfg.print_config:
             print cfg;
+
             sys.exit(EXIT_SUCCESS);
+
         with daemon.DaemonContext(
                 chroot_directory=cfg.chroot,
                 detach_process=cfg.detach,
@@ -49,30 +54,37 @@ def main(argv):
                 umask=cfg.umask,
                 working_directory=cfg.workdir):
             pass;
+
         return EXIT_SUCCESS;
     except Exception as ex:
         print ex;
+
         return EXIT_FAILURE;
 
 def parse_args(argv):
     """Parse Myt server command-line arguments.
     """;
+
     opts = "0:1:2:C:c:G:hLU:u:VvW:";
     longopts = ["chroot=", "config=", "gid=", "help", "license", "no-detach",
                 "print-config", "stderr=", "stdin=", "stdout=", "uid=", "umask=",
                 "version", "verbose", "workdir="];
     status = 1;
     cfg = mytd.config.Config();
+
     optlist, args = getopt.gnu_getopt(argv[1:], opts, longopts);
+
     if len(optlist) == 0:
         cfg.interactive = True;
     else:
         status = process_opts(cfg, optlist);
+
     return status, cfg;
 
 def print_help():
     """Print the command usage/help message.
     """;
+
     print """  Copyright (C) 2009 Brandon McCaig, Samuel Henderson
 
   mytd is the server application for the Myt project, an attempt to offer
@@ -140,6 +152,7 @@ def print_help():
 def print_license():
     """Write the software license to stdout.
     """;
+
     print """
 Myt is a secure messaging system composed of E-mail and chat facilities.
 Copyright (C) 2009 Brandon McCaig, Samuel Henderson
@@ -163,11 +176,13 @@ along with Myt.  If not, see <http://www.gnu.org/licenses/>.
 def print_version():
     """Write the software version to stdout.
     """;
+
     print "<Version goes here>";
 
 def process_opts(cfg, optlist):
     """Process Myt server command-line options.
     """;
+
     for o, a in optlist:
         if o in ("-0", "--stdin"):
             print "Received stdin '" + a + "'";
@@ -208,6 +223,7 @@ def process_opts(cfg, optlist):
             cfg.verbose = True;
         elif o in ("-W", "--workdir"):
             cfg.workdir = a;
+
     return 1;
 
 if __name__ == "__main__":

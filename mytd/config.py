@@ -54,6 +54,7 @@ stdout = {6}
 uid = {7} ({8})
 umask = {9}
 workdir = {10}""";
+
         return str.format(FORMAT, self.chroot, self.detach,
                           grp.getgrgid(self.gid)[0], self.gid, self.stderr,
                           self.stdin, self.stdout, pwd.getpwuid(self.uid)[0],

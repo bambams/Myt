@@ -32,24 +32,31 @@ def assert_recipients_unset(cfg):
     If the recipients are set already then we have too many recipients arguments
     and need to asplode.
     """;
+
     if cfg.recipient != None:
         raise CmdLineOptionError(msg="Too many recipients arguments.");
+
 
 def main(argv):
     """The main routine for the Myt client.
     """;
     try:
         status, cfg = parse_args(argv);
+
         if status < 0:
             sys.exit(EXIT_FAILURE);
         elif status == 0:
             sys.exit(EXIT_SUCCESS);
+
         cfg.load();
+
         if cfg.print_config:
             print cfg;
             sys.exit(EXIT_SUCCESS);
+
         if cfg.interactive:
             print "Interactive mode activated.";
+
         return EXIT_SUCCESS;
     except Exception as ex:
         print ex;
@@ -58,6 +65,7 @@ def main(argv):
 def parse_args(argv):
     """Parse Myt client command-line arguments.
     """;
+
     opts = "B:C:c:H:hiLM:P:R:T:U:Vv";
     longopts = ["bcc=", "cc=", "config=", "host=", "help", "interactive",
                 "license", "message=", "non-interactive", "password=",
@@ -65,16 +73,20 @@ def parse_args(argv):
                 "verbose"];
     status = 1;
     cfg = myt.config.Config();
+
     optlist, args = getopt.gnu_getopt(argv[1:], opts, longopts);
+
     if len(optlist) == 0:
         cfg.interactive = True;
     else:
         status = process_opts(cfg, optlist);
+
     return status, cfg;
 
 def print_help():
     """Print the command usage/help message.
     """;
+
     print """  Copyright (C) 2009 Brandon McCaig, Samuel Henderson
 
   myt is the client application for the Myt project, an attempt to offer
@@ -149,6 +161,7 @@ def print_help():
 def print_license():
     """Write the software license to stdout.
     """;
+
     print """
 Myt is a secure messaging system composed of E-mail and chat facilities.
 Copyright (C) 2009 Brandon McCaig, Samuel Henderson
@@ -172,11 +185,13 @@ along with Myt.  If not, see <http://www.gnu.org/licenses/>.
 def print_version():
     """Write the software version to stdout.
     """;
+
     print "<Version goes here>";
 
 def process_opts(cfg, optlist):
     """Process Myt client command-line options.
     """;
+
     for o, a in optlist:
         if o in ("-B", "--bcc"):
             pass;
@@ -214,6 +229,7 @@ def process_opts(cfg, optlist):
             return 0;
         elif o in ("-v", "--verbose"):
             cfg.verbose = True;
+
     return 1;
 
 if __name__ == "__main__":

@@ -22,6 +22,7 @@
 class Error(Exception):
     """Base class for Myt exceptions.
     """;
+
     pass;
 
 class ArgumentError(Error):
@@ -31,6 +32,7 @@ class ArgumentError(Error):
         [argname] -- The name of the argument.
         [msg] -- A contextual message.
     """;
+
     DEFAULT = "Invalid argument.";
     NAMEONLY = "Argument '{0}' is invalid.";
     MSGONLY = "{0} {1}";
@@ -57,5 +59,6 @@ class CmdLineArgumentError(ArgumentError):
 class CmdLineOptionError(CmdLineArgumentError):
     """Indicates that one or more command-line options is invalid.
     """;
+
     NAMEONLY = "Option '{0}' is invalid.";
 

@@ -24,9 +24,11 @@ import common.host;
 class User:
     """Represents a Myt user.
     """;
+
     def __init__(self, name, host):
         if not isinstance(host, myt.host.Host):
             raise InvalidArgumentError(argname="host", msg="Expected object of type myt.host.Host.");
+
         if not isinstance(name, str):
             raise InvalidArgumentError(argname="name", msg="Expected object of type str.");
 

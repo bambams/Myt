@@ -53,7 +53,9 @@ password: {6}
 recipients: {7}
 user: {8}
 verbose: {9}""";
+
         msglen = [lambda msg: len(msg), lambda msg: 0][self.message == None](self.message);
+
         return str.format(FORMAT, self.bcc, self.cc, self.host,
                           self.interactive, msglen, self.mode, self.password,
                           self.recipients, self.user, self.verbose);
